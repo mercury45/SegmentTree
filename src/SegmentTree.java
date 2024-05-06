@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class SegmentTree {
-
+    int oper = 0;
     int[] tree;
     int n;
     public SegmentTree(int[] array) {
@@ -29,6 +29,7 @@ public class SegmentTree {
         set(index, 0);
     }
     public void set(int index, int value, int node, int left, int right) {
+        oper+=1;
         if (left == right) {
             tree[node] = value;
         } else {
@@ -43,6 +44,7 @@ public class SegmentTree {
     }
     
     public int sum(int leftIndex, int rightIndex, int x, int xleft, int xright) {
+        oper+=1;
         if (rightIndex < xleft || leftIndex > xright) return 0;
         if (xleft >= leftIndex && xright <= rightIndex) return tree[x];
         int xmid = (xleft + xright) / 2;
